@@ -4,9 +4,9 @@ Run these commands from the project directory. They only read account and sessio
 
 | Command | What it shows |
 | --- | --- |
-| `./list-users` | Username, UID, home directory and shell for accounts within the regular user range defined by `UID_MIN` and `UID_MAX` in `/etc/login.defs`. |
-| `./list-users --all` | The same columns for every account listed by `getent passwd`, including root and service accounts. |
-| `./logged-in-users` | One row per login session reported by `who`. A user with multiple sessions can appear more than once. |
+| `./list-users.sh` | Username, UID, home directory and shell for accounts within the regular user range defined by `UID_MIN` and `UID_MAX` in `/etc/login.defs`. |
+| `./list-users.sh --all` | The same columns for every account listed by `getent passwd`, including root and service accounts. |
+| `./logged-in-users.sh` | One row per login session reported by `who`. A user with multiple sessions can appear more than once. |
 
 ## Standard Linux commands
 
