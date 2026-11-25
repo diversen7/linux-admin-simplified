@@ -1,11 +1,12 @@
 # Linux user administration
 
-Run these commands from the project directory, or omit `./` after installing them. The commands in the table only read account and session information and can be run as an ordinary user.
+Run these commands from the project directory, or omit `./` after installing them. Run the sudo report as root. The other listings work as an ordinary user.
 
 | Command | What it shows |
 | --- | --- |
 | `./user-list.sh` | Username, UID, home directory and shell for accounts within the regular user range defined by `UID_MIN` and `UID_MAX` in `/etc/login.defs`. |
 | `./user-list.sh --all` | The same columns for every account listed by `getent passwd`, including root and service accounts. |
+| `./user-list.sh --sudo` | Sudo rules on this host for each account listed by `getent passwd`, including service accounts. Shows allowed commands, denials and any lookup errors reported by sudo. |
 | `./user-logged-in.sh` | One row per login session reported by `who`. A user with multiple sessions can appear more than once. |
 
 ## Delete a local user
