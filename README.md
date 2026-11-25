@@ -17,13 +17,15 @@ Run `sudo ./user-delete.sh USERNAME` from the project directory, replacing `USER
 
 Press Enter at the menu to cancel. Selecting 1 or 2 runs the chosen command immediately.
 
-## Install for your user
+## Install or update for your user
 
-From the project directory, run:
+With Git installed, run the same command for the first installation and for updates:
 
 ```sh
-./setup/install.sh
+(repo="$HOME/linux-admin-simplified"; if [ -e "$repo/.git" ]; then git -C "$repo" pull --ff-only; else git clone https://github.com/diversen7/linux-admin-simplified.git "$repo"; fi && "$repo/setup/install.sh")
 ```
+
+The first run clones the project into `~/linux-admin-simplified`. Later runs update that checkout from its configured upstream. The installer runs only after Git succeeds.
 
 Run the installer as the user who will use the commands. It creates `~/bin` if needed and copies every top-level `.sh` command there with executable permissions. Run it again to update the installed copies. Files in `~/bin` with matching names are replaced.
 
