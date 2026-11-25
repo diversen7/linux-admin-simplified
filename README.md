@@ -1,12 +1,21 @@
-# Linux user overview
+# Linux user administration
 
-Run these commands from the project directory, or omit `./` after installing them. They only read account and session information and can be run as an ordinary user.
+Run these commands from the project directory, or omit `./` after installing them. The commands in the table only read account and session information and can be run as an ordinary user.
 
 | Command | What it shows |
 | --- | --- |
-| `./list-users.sh` | Username, UID, home directory and shell for accounts within the regular user range defined by `UID_MIN` and `UID_MAX` in `/etc/login.defs`. |
-| `./list-users.sh --all` | The same columns for every account listed by `getent passwd`, including root and service accounts. |
-| `./logged-in-users.sh` | One row per login session reported by `who`. A user with multiple sessions can appear more than once. |
+| `./user-list.sh` | Username, UID, home directory and shell for accounts within the regular user range defined by `UID_MIN` and `UID_MAX` in `/etc/login.defs`. |
+| `./user-list.sh --all` | The same columns for every account listed by `getent passwd`, including root and service accounts. |
+| `./user-logged-in.sh` | One row per login session reported by `who`. A user with multiple sessions can appear more than once. |
+
+## Delete a local user
+
+Run `sudo ./user-delete.sh USERNAME` from the project directory, replacing `USERNAME` with the account name. If you are already root, omit `sudo`. Check the displayed username before choosing an option.
+
+1. Delete the account and keep its home directory (`userdel`).
+2. Delete the account, its home directory and its local mail spool (`userdel -r`).
+
+Press Enter at the menu to cancel. Selecting 1 or 2 runs the chosen command immediately.
 
 ## Install for your user
 
@@ -24,7 +33,7 @@ Log in again, or run the following in your current Bash, Zsh or POSIX shell to u
 
 ```sh
 export PATH="$HOME/bin:$PATH"
-list-users.sh
+user-list.sh
 ```
 
 ## Standard Linux commands
