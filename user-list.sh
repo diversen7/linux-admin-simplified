@@ -2,7 +2,7 @@
 set -eu
 
 usage() {
-    echo "Usage: $0 [--all | --sudo]" >&2
+    echo "Usage: $0 [--all]" >&2
     exit 2
 }
 
@@ -10,23 +10,6 @@ usage() {
 case "${1-}" in
     '') all=0 ;;
     --all) all=1 ;;
-    --sudo)
-        if [ "$(id -u)" != 0 ]; then
-            echo "Run this report as root to inspect sudo privileges for all users." >&2
-            exit 1
-        fi
-        command -v sudo >/dev/null || { echo "sudo is required for this report." >&2; exit 1; }
-        accounts=$(getent passwd)
-        while IFS=: read -r username fields; do
-            [ -n "$username" ] || continue
-            printf '\n[%s]\n' "$username"
-            # A denied account returns a nonzero status. Keep reporting other accounts.
-            sudo -n -l -U "$username" </dev/null || continue
-        done <<EOF
-$accounts
-EOF
-        exit 0
-        ;;
     *) usage ;;
 esac
 

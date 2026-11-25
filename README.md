@@ -6,7 +6,7 @@ Run these commands from the project directory, or omit `./` after installing the
 | --- | --- |
 | `./user-list.sh` | Username, UID, home directory and shell for accounts within the regular user range defined by `UID_MIN` and `UID_MAX` in `/etc/login.defs`. |
 | `./user-list.sh --all` | The same columns for every account listed by `getent passwd`, including root and service accounts. |
-| `./user-list.sh --sudo` | Sudo rules on this host for each account listed by `getent passwd`, including service accounts. Shows allowed commands, denials and any lookup errors reported by sudo. |
+| `./user-sudo.sh` | Lists accounts with sudo access on this host and their allowed commands. Lookup errors are reported on standard error. |
 | `./user-logged-in.sh` | One row per login session reported by `who`. A user with multiple sessions can appear more than once. |
 
 ## Delete a local user
